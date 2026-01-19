@@ -33,6 +33,7 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
+            align-items: start;
         }
 
         .restaurant-card {
@@ -67,6 +68,10 @@
         .card-content {
             padding: 12px;
             font-size: 0.85em;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 150px;
         }
 
         .card-header {
