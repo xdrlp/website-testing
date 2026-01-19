@@ -22,7 +22,12 @@
             max-width: 1000px;
             margin: 0 auto;
             padding: 0;
-            padding-top: 30px;
+        }
+
+        .container::before {
+            content: '';
+            display: block;
+            height: 30px;
         }
 
         h1 {
@@ -34,7 +39,6 @@
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
             align-items: start;
-            padding-top: 30px;
         }
 
         .restaurant-card {
