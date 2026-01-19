@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View More Button</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: transparent;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .view-more-button {
+            display: inline-block;
+            background: #f87c17;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(248, 124, 23, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .view-more-button:hover {
+            background: #e56d0f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(248, 124, 23, 0.4);
+        }
+
+        .view-more-button:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <a href="https://sites.google.com/view/abunda-go/menu" target="_blank" class="view-more-button">
+        View More
+    </a>
+</body>
+</html>
