@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Choose Us - Abunda GO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans+Display&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e1e25 0%, #2a2a32 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Section */
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 80px;
+            padding: 40px 0;
+            animation: fadeInDown 0.8s ease-out;
+            border-top: 2px dashed #333;
+            border-bottom: 2px dashed #333;
+        }
+
+        .hero-section h1 {
+            color: #f87c17;
+            font-size: 2.5em;
+            margin-bottom: 0;
+            font-weight: 550;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1.2;
+            font-family: 'Cal Sans Display', sans-serif;
+        }
+
+        .hero-section p {
+            color: #d0d0d0;
+            font-size: 1.1em;
+            margin: 0;
+            line-height: 1.6;
+            text-align: right;
+            font-family: 'Cabin', sans-serif;
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-bottom: 80px;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .stat-card {
+            background: rgba(248, 124, 23, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(248, 124, 23, 0.3);
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(248, 124, 23, 0.2) 0%, transparent 70%);
+            transition: all 0.5s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(248, 124, 23, 0.6);
+            background: rgba(248, 124, 23, 0.15);
+            box-shadow: 0 15px 40px rgba(248, 124, 23, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #ff9c42;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-label {
+            color: #d0d0d0;
+            font-size: 0.95em;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            color: #ffffff;
+            font-size: 2.5em;
+            margin-bottom: 60px;
+            font-weight: 700;
+            text-align: center;
+            animation: fadeInDown 0.8s ease-out 0.4s both;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .benefit-card {
+            background: rgba(25, 25, 32, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 40px 30px;
+            border-radius: 18px;
+            border: 1px solid rgba(248, 124, 23, 0.2);
+            transition: all 0.4s ease;
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card:nth-child(1) { animation-delay: 0.5s; }
+        .benefit-card:nth-child(2) { animation-delay: 0.6s; }
+        .benefit-card:nth-child(3) { animation-delay: 0.7s; }
+        .benefit-card:nth-child(4) { animation-delay: 0.8s; }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ff9c42, transparent);
+            transition: all 0.5s ease;
+        }
+
+        .benefit-card:hover::before {
+            left: 100%;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-12px);
+            border-color: rgba(248, 124, 23, 0.5);
+            background: rgba(248, 124, 23, 0.08);
+            box-shadow: 0 20px 50px rgba(248, 124, 23, 0.15);
+        }
+
+        .benefit-icon {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(255, 156, 66, 0.2), rgba(248, 124, 23, 0.2));
+            padding: 15px 20px;
+            border-radius: 12px;
+            line-height: 1;
+        }
+
+        .benefit-title {
+            color: #ffffff;
+            font-size: 1.4em;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .benefit-highlight {
+            color: #ff9c42;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .benefit-desc {
+            color: #b0b0b0;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        /* Testimonial Section */
+        .testimonial-section {
+            margin-bottom: 80px;
+            animation: fadeInUp 0.8s ease-out 0.9s both;
+        }
+
+        .testimonial-container {
+            background: rgba(248, 124, 23, 0.08);
+            backdrop-filter: blur(15px);
+            padding: 50px 40px;
+            border-radius: 20px;
+            border: 2px solid rgba(248, 124, 23, 0.3);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-container::before {
+            content: '❝';
+            position: absolute;
+            top: 10px;
+            left: 40px;
+            font-size: 5em;
+            color: #f87c17;
+            font-weight: 700;
+            opacity: 0.4;
+            letter-spacing: 5px;
+        }
+
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-text {
+            color: #e0e0e0;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.05em;
+            margin-bottom: 8px;
+        }
+
+        .testimonial-role {
+            color: #ff9c42;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-rating {
+            display: flex;
+            gap: 5px;
+            font-size: 1.3em;
+        }
+
+        .testimonial-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .testimonial-image img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(248, 124, 23, 0.25);
+            border: 2px solid rgba(248, 124, 23, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .testimonial-image img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 70px rgba(248, 124, 23, 0.35);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 80px 40px;
+            background: linear-gradient(135deg, rgba(248, 124, 23, 0.15) 0%, rgba(255, 156, 66, 0.1) 100%);
+            border-radius: 20px;
+            border: 2px solid rgba(248, 124, 23, 0.3);
+            animation: fadeInUp 0.8s ease-out 1s both;
+        }
+
+        .cta-section h2 {
+            color: #ffffff;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .cta-section p {
+            color: #d0d0d0;
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            padding: 18px 50px;
+            background: linear-gradient(135deg, #ff9c42 0%, #f87c17 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(248, 124, 23, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 45px rgba(248, 124, 23, 0.6);
+            background: linear-gradient(135deg, #ffb366 0%, #ff9c42 100%);
+        }
+
+        .cta-button:active {
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .hero-section p {
+                text-align: left;
+            }
+
+            .testimonial-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .hero-section h1 {
+                font-size: 2.2em;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            .cta-section {
+                padding: 60px 30px;
+            }
+
+            .benefit-card {
+                padding: 30px 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+
+            .hero-section {
+                margin-bottom: 50px;
+            }
+
+            .hero-section h1 {
+                font-size: 1.8em;
+            }
+
+            .hero-section p {
+                font-size: 1em;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+                margin-bottom: 50px;
+            }
+
+            .stat-card {
+                padding: 20px 15px;
+            }
+
+            .stat-number {
+                font-size: 2em;
+            }
+
+            .stat-label {
+                font-size: 0.85em;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .benefit-icon {
+                font-size: 2.5em;
+                padding: 12px 15px;
+            }
+
+            .benefit-title {
+                font-size: 1.2em;
+            }
+
+            .testimonial-container {
+                padding: 30px 20px;
+                gap: 30px;
+            }
+
+            .testimonial-text {
+                font-size: 1em;
+            }
+
+            .testimonial-content {
+                order: 2;
+            }
+
+            .testimonial-image {
+                order: 1;
+            }
+
+            .testimonial-image img {
+                max-width: 250px;
+            }
+
+            .cta-section {
+                padding: 40px 20px;
+            }
+
+            .cta-section h2 {
+                font-size: 1.6em;
+            }
+
+            .cta-section p {
+                font-size: 0.95em;
+            }
+
+            .cta-button {
+                padding: 14px 35px;
+                font-size: 0.95em;
+            }
+
+            .section-title {
+                font-size: 1.6em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section h1 {
+                font-size: 1.5em;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.4em;
+                margin-bottom: 30px;
+            }
+
+            .benefit-card {
+                padding: 20px 15px;
+            }
+
+            .stat-number {
+                font-size: 1.8em;
+            }
+
+            .testimonial-container {
+                padding: 20px 15px;
+            }
+
+            .cta-section {
+                padding: 30px 15px;
+            }
+
+            .cta-section h2 {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h1>Why Choose Us?</h1>
+            <p>Choosing us means enjoying hot meals, smooth ordering, and dependable service without the hassle</p>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">15-25</div>
+                <div class="stat-label">Minutes Guaranteed Delivery</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">50K+</div>
+                <div class="stat-label">Happy Customers</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">4.8★</div>
+                <div class="stat-label">Customer Rating</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Support Available</div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="benefits-section">
+            <h2 class="section-title">Our Key Benefits</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <div class="benefit-title">Fast Delivery Time</div>
+                    <div class="benefit-highlight">15-25 minutes guaranteed</div>
+                    <div class="benefit-desc">Get your food delivered hot and fresh. We partner with nearby restaurants and efficient riders to minimize waiting time.</div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🛒</div>
+                    <div class="benefit-title">More Efficient Ordering</div>
+                    <div class="benefit-highlight">3 taps to checkout</div>
+                    <div class="benefit-desc">Easy browsing and quick checkout. Choose and order your favorite meals with just a few taps.</div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">✨</div>
+                    <div class="benefit-title">Reliable & Consistent Quality</div>
+                    <div class="benefit-highlight">100% satisfaction guarantee</div>
+                    <div class="benefit-desc">We work with trusted restaurants to ensure your food arrives as expected—every order, every time.</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Testimonial Section -->
+        <section class="testimonial-section">
+            <div class="testimonial-container">
+                <div class="testimonial-content">
+                    <div class="testimonial-text">
+                        "Abunda GO has completely changed how I order food. The delivery is incredibly fast, usually within 20 minutes, and the app is so intuitive. I've tried many delivery services, but this one stands out for its reliability and excellent customer service. Highly recommended!"
+                    </div>
+                    <div class="testimonial-author">Gabriel Brotonel</div>
+                    <div class="testimonial-role">Regular Customer</div>
+                    <div class="testimonial-rating">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                </div>
+                <div class="testimonial-image">
+                    <img src="https://imgur.com/0VuYtIZ.jpg" alt="Happy customer with Abunda GO delivery">
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2>Ready to Experience the Difference?</h2>
+            <p>Join thousands of satisfied customers and enjoy hassle-free food delivery today</p>
+            <button class="cta-button">Order Now</button>
+        </section>
+    </div>
+
+    <script>
+        // Smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // CTA Button Click Handler
+        document.querySelector('.cta-button').addEventListener('click', function() {
+            window.open('https://sites.google.com/view/abunda-go/menu', '_blank');
+        });
+
+        // Add subtle parallax effect on scroll
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+            const ctaSection = document.querySelector('.cta-section');
+            if (ctaSection) {
+                ctaSection.style.transform = `translateY(${scrollPosition * 0.05}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
