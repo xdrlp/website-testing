@@ -408,7 +408,7 @@
             height: fit-content;
             position: fixed;
             right: 20px;
-            top: 20px;
+            top: 88px;
             width: 320px;
             box-shadow: 0 20px 60px rgba(248, 124, 23, 0.2);
             z-index: 100;
@@ -505,6 +505,35 @@
         .checkout-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(248, 124, 23, 0.3);
+        }
+
+        .checkout-notification {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(76, 175, 80, 0.15);
+            border: 1px solid rgba(76, 175, 80, 0.4);
+            border-radius: 10px;
+            color: #4caf50;
+            font-size: 0.9em;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        .checkout-notification.show {
+            display: block;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Responsive */
@@ -614,7 +643,6 @@
             <div class="hero-content">
                 <h2>We make food with <span class="highlight">love</span> and <span class="highlight">passion</span></h2>
                 <p>We make dishes with quality ingredients</p>
-                <button class="hero-btn">See More</button>
             </div>
             <div class="hero-image">
                 <img src="https://via.placeholder.com/300x250/f87c17/ffffff?text=Fresh+Food" alt="Fresh food">
@@ -625,8 +653,7 @@
         <div class="categories-section">
             <h3 class="section-title">Categories</h3>
             <div class="categories-grid">
-                <button class="category-btn active">🍔 Meter</button>
-                <button class="category-btn">🍣 Sushi</button>
+                <button class="category-btn active">🍣 Sushi</button>
                 <button class="category-btn">🍕 Pizza</button>
                 <button class="category-btn">🍗 Chicken</button>
                 <button class="category-btn">🍜 Ramen</button>
@@ -788,7 +815,8 @@
                 <span>$50.47</span>
             </div>
 
-            <button class="checkout-btn">Continue to Payment</button>
+            <button class="checkout-btn">Proceed to checkout</button>
+            <div class="checkout-notification">✓ Thank you for your order! Your items are being prepared and will be delivered shortly.</div>
         </div>
     </div>
 
@@ -809,6 +837,15 @@
                     card.style.opacity = '1';
                 }, 300);
             });
+        });
+
+        // Checkout button handler
+        document.querySelector('.checkout-btn').addEventListener('click', function() {
+            const notification = document.querySelector('.checkout-notification');
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 5000);
         });
     </script>
 </body>
