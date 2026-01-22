@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conefluff - Abunda GO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans+Display&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cabin', sans-serif;
+            background: linear-gradient(135deg, #1e1e25 0%, #2a2a32 100%);
+            min-height: 100vh;
+            color: #ffffff;
+        }
+
+        .main-wrapper {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            padding: 20px;
+            padding-right: 380px;
+            max-width: none;
+            margin: 0 auto;
+        }
+
+        /* Back Button */
+        .back-btn {
+            color: #f87c17;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .back-btn:hover {
+            color: #ff9c42;
+        }
+
+        /* Video Ad Section */
+        .video-ad {
+            width: 100%;
+            height: 400px;
+            background: rgba(25, 25, 32, 0.8);
+            border: 2px solid rgba(248, 124, 23, 0.4);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .video-ad video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Restaurant Header */
+        .restaurant-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .restaurant-logo {
+            width: 80px;
+            height: 80px;
+            background: rgba(248, 124, 23, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .restaurant-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .restaurant-info h2 {
+            font-size: 2em;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .restaurant-info p {
+            font-size: 0.95em;
+            color: #888;
+        }
+
+        /* Menu Grid */
+        .menu-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .menu-section {
+            background: rgba(248, 124, 23, 0.08);
+            border: 2px solid rgba(248, 124, 23, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .section-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #f87c17;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .menu-item {
+            background: rgba(25, 25, 32, 0.6);
+            border: 1px solid rgba(248, 124, 23, 0.2);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover {
+            background: rgba(25, 25, 32, 0.8);
+            border-color: #f87c17;
+        }
+
+        .item-name {
+            font-size: 0.95em;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .item-prices {
+            display: flex;
+            gap: 15px;
+            font-size: 0.85em;
+        }
+
+        .price-option {
+            display: flex;
+            gap: 8px;
+            color: #d0d0d0;
+        }
+
+        .price-value {
+            color: #f87c17;
+            font-weight: 700;
+        }
+
+        /* Order Summary Sidebar */
+        .order-summary {
+            background: rgba(25, 25, 32, 0.9);
+            border: 2px solid rgba(248, 124, 23, 0.4);
+            border-radius: 18px;
+            padding: 30px;
+            height: fit-content;
+            position: fixed;
+            right: 20px;
+            top: 88px;
+            width: 320px;
+            box-shadow: 0 20px 60px rgba(248, 124, 23, 0.2);
+            z-index: 100;
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+        }
+
+        .summary-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(248, 124, 23, 0.2);
+        }
+
+        .summary-header h3 {
+            font-size: 1.1em;
+        }
+
+        .item-count {
+            background: #f87c17;
+            color: #ffffff;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            font-weight: 700;
+        }
+
+        .order-items {
+            margin-bottom: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(248, 124, 23, 0.1);
+            font-size: 0.85em;
+        }
+
+        .order-item-name {
+            flex: 1;
+            color: #d0d0d0;
+        }
+
+        .order-item-price {
+            color: #f87c17;
+            font-weight: 700;
+        }
+
+        .summary-divider {
+            height: 1px;
+            background: rgba(248, 124, 23, 0.2);
+            margin: 20px 0;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 0.9em;
+        }
+
+        .summary-row.total {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #f87c17;
+            padding-top: 12px;
+            border-top: 1px solid rgba(248, 124, 23, 0.2);
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #ff9c42 0%, #f87c17 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(248, 124, 23, 0.3);
+        }
+
+        .checkout-notification {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(76, 175, 80, 0.15);
+            border: 1px solid rgba(76, 175, 80, 0.4);
+            border-radius: 10px;
+            color: #4caf50;
+            font-size: 0.9em;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        .checkout-notification.show {
+            display: block;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .main-wrapper {
+                padding-right: 20px;
+            }
+
+            .order-summary {
+                position: relative;
+                right: auto;
+                top: auto;
+                width: 100%;
+                max-height: none;
+                margin-top: 30px;
+            }
+
+            .menu-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-wrapper {
+                padding: 15px;
+            }
+
+            .menu-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .video-ad {
+                height: 300px;
+            }
+
+            .restaurant-info h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-wrapper">
+        <!-- Back Button -->
+        <a href="https://sites.google.com/view/abunda-go/menu" class="back-btn">← Back to Menu</a>
+
+        <!-- Video Ad Section -->
+        <div class="video-ad">
+            <video autoplay muted loop>
+                <source src="https://i.imgur.com/lOcwRbz.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <!-- Restaurant Header -->
+        <div class="restaurant-header">
+            <div class="restaurant-logo">
+                <img src="https://imgur.com/0ZWhHH5.jpg" alt="Conefluff">
+            </div>
+            <div class="restaurant-info">
+                <h2>Conefluff</h2>
+                <p>⭐ 4.9 • 15-25 min</p>
+            </div>
+        </div>
+
+        <!-- Menu Container -->
+        <div class="menu-container">
+            <!-- Classic Delights -->
+            <div class="menu-section">
+                <div class="section-title">Classic Delights</div>
+                
+                <div class="menu-item" onclick="addToCart('Choco Waffles - Mini', 39)">
+                    <div class="item-name">Choco Waffles</div>
+                    <div class="item-prices">
+                        <div class="price-option">Mini: <span class="price-value">₱39</span></div>
+                        <div class="price-option">Cone: <span class="price-value">₱59</span></div>
+                    </div>
+                </div>
+
+                <div class="menu-item" onclick="addToCart('Strawberry Waffles - Mini', 39)">
+                    <div class="item-name">Strawberry Waffles</div>
+                    <div class="item-prices">
+                        <div class="price-option">Mini: <span class="price-value">₱39</span></div>
+                        <div class="price-option">Cone: <span class="price-value">₱59</span></div>
+                    </div>
+                </div>
+
+                <div class="menu-item" onclick="addToCart('Caramel Waffles - Mini', 49)">
+                    <div class="item-name">Caramel Waffles</div>
+                    <div class="item-prices">
+                        <div class="price-option">Mini: <span class="price-value">₱49</span></div>
+                        <div class="price-option">Cone: <span class="price-value">₱69</span></div>
+                    </div>
+                </div>
+
+                <div class="section-title" style="margin-top: 20px; font-size: 0.95em; color: #d0d0d0;">Add Ons:</div>
+                
+                <div class="menu-item" onclick="addToCart('Chocolate Syrup', 10)">
+                    <div class="item-name">Chocolate Syrup</div>
+                    <div class="item-prices">
+                        <div class="price-option"><span class="price-value">₱10</span></div>
+                    </div>
+                </div>
+
+                <div class="menu-item" onclick="addToCart('Strawberry Syrup', 10)">
+                    <div class="item-name">Strawberry Syrup</div>
+                    <div class="item-prices">
+                        <div class="price-option"><span class="price-value">₱10</span></div>
+                    </div>
+                </div>
+
+                <div class="menu-item" onclick="addToCart('Caramel Syrup', 10)">
+                    <div class="item-name">Caramel Syrup</div>
+                    <div class="item-prices">
+                        <div class="price-option"><span class="price-value">₱10</span></div>
+                    </div>
+                </div>
+
+                <div class="menu-item" onclick="addToCart('Sliced Almonds', 15)">
+                    <div class="item-name">Sliced Almonds</div>
+                    <div class="item-prices">
+                        <div class="price-option"><span class="price-value">₱15</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Premium Delights -->
+            <div class="menu-section">
+                <div class="section-title">Premium Delights</div>
+                
+                <div class="menu-item" onclick="addToCart('Oreo Waffles - Mini', 59)">
+                    <div class="item-name">Oreo Waffles</div>
+                    <div class="item-prices">
+                        <div class="price-option">Mini: <span class="price-value">₱59</span></div>
+                        <div class="price-option">Cone: <span class="price-value">₱79</span></div>
+                    </div>
+                </div>
+
+                <div class="menu-item" onclick="addToCart('Matcha Waffles - Mini', 59)">
+                    <div class="item-name">Matcha Waffles</div>
+                    <div class="item-prices">
+                        <div class="price-option">Mini: <span class="price-value">₱59</span></div>
+                        <div class="price-option">Cone: <span class="price-value">₱79</span></div>
+                    </div>
+                </div>
+
+                <div class="menu-item" onclick="addToCart('Biscoff Waffles - Mini', 69)">
+                    <div class="item-name">Biscoff Waffles</div>
+                    <div class="item-prices">
+                        <div class="price-option">Mini: <span class="price-value">₱69</span></div>
+                        <div class="price-option">Cone: <span class="price-value">₱89</span></div>
+                    </div>
+                </div>
+
+                <div class="section-title" style="margin-top: 20px; font-size: 0.95em; color: #d0d0d0;">Add Ons:</div>
+                
+                <div class="menu-item" onclick="addToCart('Oreo Cookies', 15)">
+                    <div class="item-name">Oreo Cookies</div>
+                    <div class="item-prices">
+                        <div class="price-option"><span class="price-value">₱15</span></div>
+                    </div>
+                </div>
+
+                <div class="menu-item" onclick="addToCart('Nutella Sauce', 20)">
+                    <div class="item-name">Nutella Sauce</div>
+                    <div class="item-prices">
+                        <div class="price-option"><span class="price-value">₱20</span></div>
+                    </div>
+                </div>
+
+                <div class="menu-item" onclick="addToCart('Matcha Sauce', 20)">
+                    <div class="item-name">Matcha Sauce</div>
+                    <div class="item-prices">
+                        <div class="price-option"><span class="price-value">₱20</span></div>
+                    </div>
+                </div>
+
+                <div class="menu-item" onclick="addToCart('Biscuit', 15)">
+                    <div class="item-name">Biscuit</div>
+                    <div class="item-prices">
+                        <div class="price-option"><span class="price-value">₱15</span></div>
+                    </div>
+                </div>
+
+                <div class="menu-item" onclick="addToCart('Biscoff Sauce', 20)">
+                    <div class="item-name">Biscoff Sauce</div>
+                    <div class="item-prices">
+                        <div class="price-option"><span class="price-value">₱20</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Summary Sidebar -->
+    <div class="order-summary">
+        <div class="summary-header">
+            <h3>Your Order Summary</h3>
+            <div class="item-count">0</div>
+        </div>
+        <div class="order-items" id="orderItemsContainer">
+        </div>
+
+        <div class="summary-divider"></div>
+
+        <div class="summary-row">
+            <span>Subtotal</span>
+            <span>₱0</span>
+        </div>
+        <div class="summary-row">
+            <span>Delivery Fee</span>
+            <span>₱50</span>
+        </div>
+
+        <div class="summary-divider"></div>
+
+        <div class="summary-row total">
+            <span>Total</span>
+            <span>₱50</span>
+        </div>
+
+        <button class="checkout-btn">Proceed to checkout</button>
+        <div class="checkout-notification">✓ Thank you for your order! Your items are being prepared and will be delivered shortly.</div>
+    </div>
+
+    <script>
+        let cartItems = {};
+
+        function addToCart(itemName, itemPrice) {
+            if (cartItems[itemName]) {
+                cartItems[itemName].quantity += 1;
+            } else {
+                cartItems[itemName] = {
+                    price: itemPrice,
+                    quantity: 1
+                };
+            }
+            updateOrderSummary();
+        }
+
+        function updateOrderSummary() {
+            const container = document.getElementById('orderItemsContainer');
+            container.innerHTML = '';
+
+            let totalPrice = 0;
+            let totalItems = 0;
+
+            for (let item in cartItems) {
+                const data = cartItems[item];
+                const itemTotal = data.price * data.quantity;
+                totalPrice += itemTotal;
+                totalItems += data.quantity;
+
+                const itemElement = document.createElement('div');
+                itemElement.className = 'order-item';
+                itemElement.innerHTML = `
+                    <span class="order-item-name">${item}${data.quantity > 1 ? ' (' + data.quantity + 'x)' : ''}</span>
+                    <span class="order-item-price">₱${itemTotal}</span>
+                `;
+                container.appendChild(itemElement);
+            }
+
+            document.querySelector('.item-count').textContent = totalItems;
+
+            const deliveryFee = 50;
+            const total = totalPrice + deliveryFee;
+
+            document.querySelectorAll('.summary-row')[0].innerHTML = `<span>Subtotal</span><span>₱${totalPrice}</span>`;
+            document.querySelectorAll('.summary-row')[1].innerHTML = `<span>Delivery Fee</span><span>₱${deliveryFee}</span>`;
+            document.querySelector('.summary-row.total').innerHTML = `<span>Total</span><span>₱${total}</span>`;
+        }
+
+        // Checkout button handler
+        document.querySelector('.checkout-btn').addEventListener('click', function() {
+            if (Object.keys(cartItems).length === 0) {
+                alert('Please add items to your cart first!');
+                return;
+            }
+            const notification = document.querySelector('.checkout-notification');
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

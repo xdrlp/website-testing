@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partner CTA - Abunda GO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cabin', sans-serif;
+            background: linear-gradient(135deg, #1e1e25 0%, #2a2a32 100%);
+            min-height: 100vh;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .cta-box {
+            background: #1e1e25;
+            border: 2px solid #f87c17;
+            border-radius: 20px;
+            padding: 60px 50px;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .cta-description {
+            font-size: 1.1em;
+            color: #b0b0b0;
+            line-height: 1.7;
+            margin-bottom: 35px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 16px 50px;
+            background: linear-gradient(135deg, #ff9c42 0%, #f87c17 100%);
+            color: #000000;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(248, 124, 23, 0.4);
+        }
+
+        .cta-btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .cta-box {
+                padding: 40px 30px;
+            }
+
+            .cta-title {
+                font-size: 1.8em;
+            }
+
+            .cta-description {
+                font-size: 1em;
+            }
+
+            .cta-btn {
+                padding: 14px 40px;
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cta-box {
+                padding: 30px 20px;
+                border-radius: 15px;
+            }
+
+            .cta-title {
+                font-size: 1.5em;
+            }
+
+            .cta-description {
+                font-size: 0.95em;
+                margin-bottom: 25px;
+            }
+
+            .cta-btn {
+                padding: 12px 35px;
+                font-size: 0.95em;
+                border-radius: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cta-container">
+        <div class="cta-box">
+            <h2 class="cta-title">Ready to Start Earning?</h2>
+            <p class="cta-description">Join our growing community of delivery partners and start earning on your own terms. Sign up in minutes and begin accepting deliveries today.</p>
+            <a href="https://sites.google.com/view/abunda-go/authentication" class="cta-btn">Apply as a Partner</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter Subscribe - Abunda GO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans+Display&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cabin', sans-serif;
+            background: linear-gradient(135deg, #1e1e25 0%, #2a2a32 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+        }
+
+        /* Subscribe Section */
+        .subscribe-section {
+            text-align: center;
+            padding: 30px 20px;
+            background: transparent;
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid #ffffff;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+
+
+        .subscribe-label {
+            color: #f87c17;
+            font-size: 0.85em;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+            font-family: 'Cabin', sans-serif;
+        }
+
+        .subscribe-section h2 {
+            color: #ffffff;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            line-height: 1.2;
+            font-family: 'Cal Sans Display', sans-serif;
+            text-shadow: 0 4px 15px rgba(248, 124, 23, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .subscribe-section p {
+            color: #b0b0b0;
+            font-size: 0.9em;
+            margin-bottom: 25px;
+            line-height: 1.5;
+            font-family: 'Cabin', sans-serif;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subscribe-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .subscribe-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 18px 25px;
+            border: 2px solid rgba(248, 124, 23, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            color: #ffffff;
+            font-size: 1em;
+            font-family: 'Cabin', sans-serif;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .subscribe-form input::placeholder {
+            color: #888888;
+        }
+
+        .subscribe-form input:focus {
+            border-color: #f87c17;
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 0 20px rgba(248, 124, 23, 0.3);
+        }
+
+        .subscribe-btn {
+            padding: 18px 45px;
+            background: linear-gradient(135deg, #f87c17 0%, #e86c00 100%);
+            border: none;
+            border-radius: 50px;
+            color: #000000;
+            font-size: 1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Cabin', sans-serif;
+            letter-spacing: 0.5px;
+            min-width: 160px;
+            box-shadow: none;
+        }
+
+        .subscribe-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: none;
+            background: linear-gradient(135deg, #e86c00 0%, #f87c17 100%);
+        }
+
+        .subscribe-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .subscribe-footer {
+            color: #888888;
+            font-size: 0.8em;
+            margin-top: 15px;
+            position: relative;
+            z-index: 1;
+            font-family: 'Cabin', sans-serif;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .subscribe-section {
+                padding: 50px 25px;
+            }
+
+            .subscribe-section h2 {
+                font-size: 2em;
+            }
+
+            .subscribe-section p {
+                font-size: 1em;
+                margin-bottom: 35px;
+            }
+
+            .subscribe-form {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .subscribe-form input {
+                width: 100%;
+                min-width: auto;
+            }
+
+            .subscribe-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="subscribe-section">
+            <span class="subscribe-label">OUR SUBSCRIBE</span>
+            <h2>Subscribe To Our Newsletter</h2>
+            <p>We recommend you to subscribe to our newspaper, drop your email below to get daily update about us.</p>
+            
+            <form class="subscribe-form" id="subscribeForm">
+                <input 
+                    type="email" 
+                    placeholder="Enter your email address" 
+                    required
+                >
+                <button type="submit" class="subscribe-btn" id="subscribeBtn">Subscribe</button>
+            </form>
+            
+            <p class="subscribe-footer">We'll never spam your inbox. Unsubscribe anytime.</p>
+        </section>
+    </div>
+
+    <script>
+        document.getElementById('subscribeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const btn = document.getElementById('subscribeBtn');
+            const originalText = btn.textContent;
+            
+            btn.textContent = '✓ Subscribed!';
+            btn.style.background = 'linear-gradient(135deg, #4CAF50 0%, #45a049 100%)';
+            
+            setTimeout(function() {
+                btn.textContent = originalText;
+                btn.style.background = 'linear-gradient(135deg, #f87c17 0%, #e86c00 100%)';
+                document.getElementById('subscribeForm').reset();
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
